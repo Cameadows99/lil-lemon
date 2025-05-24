@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Nav } from './Nav';
 import { BookingForm } from './BookingForm';
 
 export const Main = () => {
@@ -29,13 +30,15 @@ const submitForm = (formData) => {
 }
 
   return (
-    <div>
+    
+    <main>
+        <Nav />
       <BookingForm
         date={date}
         setDate={setDate}
         availableTimes={availableTimes}
         submitForm={submitForm}
       />
-    </div>
+    </main>
   );
 };

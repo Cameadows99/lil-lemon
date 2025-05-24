@@ -1,8 +1,17 @@
+import React from 'react';
+import { Nav } from '../components/Nav';
+import { Body } from '../components/Body';
+import { Footer } from '../components/Footer'
+import { Specials } from '../components/Specials';
+
 export const Home = () => {
-    return (
-        <>
-            <h1>Welcome to the Home Page</h1>
-            <p>This is the home page of our application.</p>
-        </>
-    )
+  return (
+      <>
+    <Nav />
+    <Body />
+    <Specials />
+    <Footer />
+    </>
+  );
 }
+

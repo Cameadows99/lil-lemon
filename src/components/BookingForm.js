@@ -25,20 +25,19 @@ export const BookingForm = ({ date, setDate, availableTimes, submitForm }) => {
     const formData = { date, time, guests, occasion };
     const success = window.submitAPI(formData);
     submitForm(formData)
-    console.log('Submitted:', formData, '→ Success:', success);}
+    console.log('Submitted:', formData, '=> Success:', success);}
   };
 
   return (
-    
-    <form
-      onSubmit={handleSubmit}
-      style={{ display: 'grid', maxWidth: 300, gap: 12 }}
-    >
-        <h1>Booking Form</h1>
+  <div className="booking-form-wrapper">
+    <form onSubmit={handleSubmit} className="booking-form">
+      <h1>Booking Form</h1>
+
       <label htmlFor="res-date">Choose date:</label>
       <input
         type="date"
         id="res-date"
+        aria-label="On Click"
         value={date}
         onChange={(e) => setDate(e.target.value)}
         required
@@ -47,16 +46,15 @@ export const BookingForm = ({ date, setDate, availableTimes, submitForm }) => {
       <label htmlFor="res-time">Choose time:</label>
       <select
         id="res-time"
+        aria-label="On Click"
         value={time}
         onChange={(e) => setTime(e.target.value)}
         required
       >
         <option value="">Select</option>
-          {availableTimes.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
+        {availableTimes.map((t) => (
+          <option key={t} value={t}>{t}</option>
+        ))}
       </select>
 
       <label htmlFor="guests">Number of guests:</label>
@@ -65,6 +63,7 @@ export const BookingForm = ({ date, setDate, availableTimes, submitForm }) => {
         id="guests"
         min="1"
         max="10"
+        aria-label="On Click"
         value={guests}
         onChange={(e) => setGuests(Number(e.target.value))}
         required
@@ -73,6 +72,7 @@ export const BookingForm = ({ date, setDate, availableTimes, submitForm }) => {
       <label htmlFor="occasion">Occasion:</label>
       <select
         id="occasion"
+        aria-label="On Click"
         value={occasion}
         onChange={(e) => setOccasion(e.target.value)}
         required
@@ -82,7 +82,10 @@ export const BookingForm = ({ date, setDate, availableTimes, submitForm }) => {
         <option>Other</option>
       </select>
 
-      <button type="submit" disabled={!isValid} >Make Your Reservation</button>
+      <button type="submit" disabled={!isValid}>
+        Make Your Reservation
+      </button>
     </form>
-  );
-};
+  </div>
+);
+}
